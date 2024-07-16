@@ -21,7 +21,6 @@ public class PostResource {
 	public ResponseEntity<Post> findById(@PathVariable String id) {
 		Post obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
-		
 	}
 	
 	
