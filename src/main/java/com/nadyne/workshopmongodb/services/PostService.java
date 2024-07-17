@@ -1,5 +1,6 @@
 package com.nadyne.workshopmongodb.services;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,6 +24,11 @@ public class PostService {
 
 	public List<Post> findByTitle(String text) {
 		return post.searchTytle(text);
+	}
+	
+	public List<Post> fullSearch(String text, Date minDate, Date maxDate){
+		maxDate = new Date(maxDate.getTime() + 24 * 60 *60 *1000);
+		return post.fullSearch(text, minDate, maxDate);
 	}
 
 }
