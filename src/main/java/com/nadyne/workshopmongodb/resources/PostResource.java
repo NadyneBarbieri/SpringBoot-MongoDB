@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -62,6 +63,11 @@ public class PostResource {
 	@DeleteMapping("/{id}")
 	public void deletePostagem(@PathVariable String id) {
 		repository.deleteById(id);
+	}
+	
+	@PutMapping
+	public ResponseEntity<Post> putPostagem(@RequestBody Post postagem){
+		return ResponseEntity.ok(repository.save(postagem));
 	}
 
 }
