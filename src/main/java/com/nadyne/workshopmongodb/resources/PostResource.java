@@ -55,19 +55,18 @@ public class PostResource {
 	}
 
 	@PostMapping
-	public ResponseEntity<Post> postPostagem(@RequestBody Post postagem){
-		return ResponseEntity.status(HttpStatus.CREATED)
-				.body(repository.save(postagem));
+	public ResponseEntity<Post> postPostagem(@RequestBody Post postagem) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(postagem));
 	}
-	
+
+	@PutMapping
+	public ResponseEntity<Post> putPostagem(@RequestBody Post postagem) {
+		return ResponseEntity.ok(repository.save(postagem));
+	}
+
 	@DeleteMapping("/{id}")
 	public void deletePostagem(@PathVariable String id) {
 		repository.deleteById(id);
-	}
-	
-	@PutMapping
-	public ResponseEntity<Post> putPostagem(@RequestBody Post postagem){
-		return ResponseEntity.ok(repository.save(postagem));
 	}
 
 }
